@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" type="text/css" href="contacts.css">
+<script src="./node_modules/angular/angular.min.js"></script>
+<script src="./ContactsService.js"></script>
+<script src="./ContactsController.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="ContactsController">
+
+    <div class="Header">Contacts</div>
+    <div class="category">FAVORITE CONTACTS</div>
+    <div class="eachContact" ng-repeat="eachContact in contactResults | favorite:true | orderBy:'name'">
+        <div class="eachContactDetail">
+            <div class="contactImage">
+                <img src="{{eachContact.smallImageURL}}">
+            </div>
+            <div class="contactName">
+                <img src="FavoriteT.png">
+                {{eachContact.name}}
+                <div class="companyName">{{eachContact.companyName}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="category">OTHER CONTACTS</div>
+    <div class="eachContact" ng-repeat="eachContact in contactResults | favorite:false | orderBy:'name'">
+        <div class="eachContactDetail">
+            <div class="contactImage">
+                <img src="{{eachContact.smallImageURL}}">
+            </div>
+            <div class="contactName">
+                {{eachContact.name}}
+                <div class="companyName">{{eachContact.companyName}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
